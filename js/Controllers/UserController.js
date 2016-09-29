@@ -1,4 +1,4 @@
-app.controller('UserController',['$scope','UserResource',function($scope,UserResource){
+app.controller('UserController',['$scope','UserResource','$window',function($scope,UserResource,$window){
 		
 		$scope.title = 'before';
 		$scope.connect = {} ;
@@ -21,6 +21,7 @@ app.controller('UserController',['$scope','UserResource',function($scope,UserRes
 				request.then(function(response){
 					console.log('success');
 					$scope.connect = response;
+					$window.location.href = "http://localhost/WebClient/main_page.html";
 			},function(error){
 				console.log('error');
 				$scope.connect = {message: 'Ha ocurrido un error'}
