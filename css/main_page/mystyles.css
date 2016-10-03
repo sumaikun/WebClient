@@ -6,5 +6,18 @@
     
  }
 
+.nav_image
+{
+ 	 margin-top: 4px;
+	 max-height: 39.2px;
+	 max-width: 39.2px; 
+}
+
+.matriz
+{
+	width: 100px;
+	height: 100px;
+	background: red;
+}
 
    

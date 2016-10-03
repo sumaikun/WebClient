@@ -29,6 +29,36 @@ app.factory('UserResource',['$http','$q',function($http,$q){
     
     	return promise; 
 	}
+
+	UserResource.credentials = function(){
+		console.log('ejecuto request');
+		$http.get("http://localhost/Gappi/public/credentials")
+		.success(function(data){
+
+        	console.log('funcion enviada');
+        	defered.resolve(data);
+    	})
+    		.error(function(err){
+        	defered.reject(err);
+    	});
+    
+    	return promise;	
+	}
+
+	UserResource.logout = function(){
+		console.log('ejecuto request');
+		$http.get("http://localhost/Gappi/public/LogOut")
+		.success(function(data){
+
+        	console.log('funcion enviada');
+        	defered.resolve(data);
+    	})
+    		.error(function(err){
+        	defered.reject(err);
+    	});
+    
+    	return promise;	
+	}
 	
 	return UserResource;	
 	
