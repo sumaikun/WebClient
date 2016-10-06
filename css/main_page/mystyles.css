@@ -15,9 +15,38 @@
 
 .matriz
 {
-	width: 100px;
-	height: 100px;
-	background: red;
+	width: 365px;
+	height: 365px;
+	background: #121212;
+	border-radius: 25px;
 }
 
+.inside_block
+{
+	position:absolute;
+	margin-top: 32.5px;
+	margin-left: 32.5px;
+	width: 300px;
+	height: 300px;
+	background: white;
+	border-radius: 5px;
+	
+}
+
+.block
+{
+	width: 30px;
+	height: 30px;
+	border-style: solid;
+    border-color: #424242;
+    
+    border-width: 1px;
+
+}
+
+.block:hover
+{
+	background:#424242; 
+
+}
    
