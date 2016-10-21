@@ -3,23 +3,33 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 		$scope.title = 'Retos';
 		$scope.col_row = '';
 		$scope.connect = {};
+		$scope.question = {};
+		$scope.list_challen = {};
 		
-		$scope.generate = function(id){
-			console.log('id relacionado '+id);
+		$scope.generate = function(id){		
+			//console.log('id relacionado '+id);
+			$scope.question.title = $scope.col_row[id].titulo;			
+			var requestx = ChallengueResource.begin(id);		
+			console.log(JSON.stringify(requestx)); 
+			//console.log('lista :'+JSON.stringify($scope.list_cha, null, 4));
 		} 
+
 
 		var init = function () {			
 			
    			var request = ChallengueResource.count();		
 				request.then(function(response){
 					console.log('success');
-					$scope.col_row = response.data;
+					console.log('success'+JSON.stringify(request));	
+					$scope.col_row = response;
 					forms();
 					
 			},function(error){
 				console.log('error');
 				$scope.connect = {message: 'Ha ocurrido un error'}
 			});
+
+
 		};
 
 	
@@ -38,7 +48,7 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 		                if(((j*10)+i)<Object.keys($scope.col_row).length)
 		                {
 		           			html+="<td style='text-align:center' >" 
-		                	html+="<div class='block' ng-click='generate(5)'  title='"+$scope.col_row[i].titulo+"'></div>"   
+		                	html+="<div class='block' ng-click='generate("+$scope.col_row[i].id+")'  title='"+$scope.col_row[i].titulo+"' data-toggle='modal' data-target='#myModal'></div>"   
 		                	html+="</td>" 	
 		                }         
 	               
