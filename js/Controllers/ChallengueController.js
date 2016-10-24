@@ -5,22 +5,33 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 		$scope.connect = {};
 		$scope.question = {};
 		$scope.list_challen = {};
-		
+		$scope.helpindex = 0;
+
 		$scope.generate = function(id){		
 			//console.log('id relacionado '+id);
 			$scope.question.title = $scope.col_row[id].titulo;			
-			var requestx = ChallengueResource.begin(id);		
-			console.log(JSON.stringify(requestx)); 
+			var requestx = ChallengueResource.begin(id);
+			requestx.success(function(response){
+				$scope.list_challen = response;
+			});
+			requestx.error(function(error){
+
+			}) 		
+			//console.log(JSON.stringify(requestx)); 
 			//console.log('lista :'+JSON.stringify($scope.list_cha, null, 4));
 		} 
 
+	    $scope.rising = function(px){
+			px = px*100;
+			return px;			
+		}	
 
 		var init = function () {			
 			
    			var request = ChallengueResource.count();		
 				request.then(function(response){
 					console.log('success');
-					console.log('success'+JSON.stringify(request));	
+					//console.log('success'+JSON.stringify(request));	
 					$scope.col_row = response;
 					forms();
 					

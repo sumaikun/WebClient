@@ -4,6 +4,12 @@ app.controller('UserController',['$scope','UserResource','$window',function($sco
 		$scope.connect = {} ;
 		$scope.User = {} ;
 		$scope.Credentials = {};
+
+	  function reload_js(src) {
+        $('script[src="' + src + '"]').remove();
+        $('<script>').attr('src', src).appendTo('head');
+	    }
+
 		$scope.test = function(){
 			$scope.title = 'change';
 			UserResource.test(function(response){
@@ -16,17 +22,40 @@ app.controller('UserController',['$scope','UserResource','$window',function($sco
 			$scope.title = 'Loggin';
 		}
 
-		$scope.AuthUser = function(){
-			var request = UserResource.login($scope.User);		
-				request.then(function(response){
-					console.log('success');
-					$scope.connect = response;
-					console.log($scope.connect);
+		$scope.AuthUser = function(){	
+			
+			//console.log('entre al controlador');			 
+			var request = UserResource.login($scope.User);
+			request.success(function(response)
+			{
+				console.log('got it');
+				$scope.connect = response;
+				if($scope.connect.message!="Los datos de inicio estan mal")
+				{
 					$window.location.href = "http://localhost/WebClient/main_page.html";
-			},function(error){
+					//alert('esta bien');
+				}
+				else
+				{
+					//alert('esta mal');
+				}
+
+			});
+			request.error(function(error){
 				console.log('error');
 				$scope.connect = {message: 'Ha ocurrido un error consiguiendo los datos de usuario'}
 			});
+				/*request.then(function(response){
+					
+					console.log('esta es la response '+JSON.stringify(response));
+					//$scope.connect = response;
+					// reload_js('js/Controllers/UserController.js');					
+					//$window.location.href = "http://localhost/WebClient/main_page.html";
+
+			},function(error){
+				console.log('error');
+				$scope.connect = {message: 'Ha ocurrido un error consiguiendo los datos de usuario'}
+			});*/		 
 		}
 
 		$scope.SignOut = function(){

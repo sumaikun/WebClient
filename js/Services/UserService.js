@@ -17,17 +17,19 @@ app.factory('UserResource',['$http','$q',function($http,$q){
 
 	UserResource.login = function(dt){
 		console.log(dt);
-		$http.post("http://localhost/Gappi/public/log",dt)
+		return $http.post("http://localhost/Gappi/public/log",dt)
 		.success(function(data){
 
-        	console.log('funcion enviada');
-        	defered.resolve(data);
+        	console.log('service data '+ JSON.stringify(data));
+        	return data;
+        	//defered.resolve(data);
     	})
     		.error(function(err){
-        	defered.reject(err);
+        	return err;
+        	//defered.reject(err);
     	});
     
-    	return promise; 
+    	//return promise; 
 	}
 
 	UserResource.credentials = function(){
@@ -60,6 +62,7 @@ app.factory('UserResource',['$http','$q',function($http,$q){
     	return promise;	
 	}
 	
+	console.log('retorno de UserResource '+ JSON.stringify(UserResource));
 	return UserResource;	
 	
 }]);

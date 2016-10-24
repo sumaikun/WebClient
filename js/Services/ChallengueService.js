@@ -17,17 +17,18 @@ app.factory('ChallengueResource',['$http','$q',function($http,$q){
 	}
 
 	ChallengueResource.begin = function(id){ 
-	 $http.get("http://localhost/Gappi/public/begin_challengues/"+id)
+	 return $http.get("http://localhost/Gappi/public/begin_challengues/"+id)
 		.success(function(data){
         	console.log('funcion enviada');
-        	console.log(data);
-        	defered.resolve(data);
+        	return data;
+        	//defered.resolve(data);
     	})
     		.error(function(err){
-        	defered.reject(err);
+    		return err;	
+        	//defered.reject(err);
     	});
     
-    	return promise;
+    	//return promise;
 	}	
 	
 	return ChallengueResource;	

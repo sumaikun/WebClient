@@ -42,6 +42,13 @@
     <!--Controllers-->
       <script src='js/Controllers/UserController.js'></script>
       <script src='js/Controllers/ChallengueController.js'></script>
+
+
+    <!--Challengue Timeline-->
+        <link rel="stylesheet" href="css/matriz_reset.css"> <!-- CSS reset -->
+        <link rel="stylesheet" href="css/matriz_style.css"> <!-- Resource style -->
+        <script src="js/programs/modernizr.js"></script> <!-- Modernizr -->  
+        
   </head>
 
   <body ng-app="Appi">
@@ -212,12 +219,57 @@
                       <span class="info-box-number">0</span>
                       <div class="progress">
                         <div class="progress-bar" style="width: 0%"></div>
-                      </div>
+                      </div>               
+                      <!--question Timeline -->
+                       <section class="cd-horizontal-timeline">
+                        <div class="timeline">
+                          <div class="events-wrapper">
+                            <div class="events">
+                              <ol>
+                                <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
+                                <li ng-repeat="challen in list_challen"><a href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" style="left:{{rising($index+1)}}px !important;">{{$index}}</a></li>
+                              
+                      
+                              </ol>
+
+                              <span class="filling-line" aria-hidden="true"></span>
+                            </div> <!-- .events -->
+                          </div> <!-- .events-wrapper -->
+                            
+                          <ul class="cd-timeline-navigation">
+                            <li><a href="#0" class="prev inactive">Prev</a></li>
+                            <li><a href="#0" class="next">Next</a></li>
+                          </ul> <!-- .cd-timeline-navigation -->
+                        </div> <!-- .timeline -->
+
+                        <div class="events-content">
+                          <ol>
+                            <li class="selected" data-date="16/01/2014">
+                              <h2>Horizontal Timeline</h2>
+                              <em>January 16th, 2014</em>
+                              <p> 
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+                              </p>
+                            </li>
+
+                            <li data-date="0/02/2014">
+                              <h2>Event title here</h2>
+                              <em>February 28th, 2014</em>
+                              <p> 
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+                              </p>
+                            </li>
+
+              
+                          </ol>
+                        </div> <!-- .events-content -->
+                      </section>
+                      <!--question Timeline -->
                       <span class="progress-description ng-binding">
                          porcentaje : 0%
                       </span>
                     </div>
-                    <p> {{list_challen}} </p>
+                    <!--<p> {{list_challen}} </p> <li  ng-repeat="challen in list_challen"><a>{{challen.id}}</a></li>--> 
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" disabled>Close</button>
@@ -262,5 +314,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="css/visual_js/bootstrap.min.js"></script>
     <script src="css/visual_js/custom.js"></script>
+    <!--controlador del timelinematriz-->
+    <script src="js/programs/main_matriz.js"></script>
   </body>
 </html>
