@@ -62,7 +62,7 @@ app.factory('UserResource',['$http','$q',function($http,$q){
     	return promise;	
 	}
 	
-	console.log('retorno de UserResource '+ JSON.stringify(UserResource));
+	//console.log('retorno de UserResource '+ JSON.stringify(UserResource));
 	return UserResource;	
 	
 }]);

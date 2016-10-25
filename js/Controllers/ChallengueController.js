@@ -7,9 +7,17 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 		$scope.list_challen = {};
 		$scope.helpindex = 0;
 
+		function notify(){
+			console.log('I hope a miracle');
+		}
+
+		$scope.get = function(){
+			alert('reached bitch');
+		}
+
 		$scope.generate = function(id){		
 			//console.log('id relacionado '+id);
-			$scope.question.title = $scope.col_row[id].titulo;			
+			$scope.question.title = $scope.col_row[(id-1)].titulo;			
 			var requestx = ChallengueResource.begin(id);
 			requestx.success(function(response){
 				$scope.list_challen = response;

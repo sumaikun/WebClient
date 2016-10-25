@@ -43,6 +43,8 @@
       <script src='js/Controllers/UserController.js'></script>
       <script src='js/Controllers/ChallengueController.js'></script>
 
+    <!--Directives-->
+      <script type="text/javascript" src="js/Directives/timer.js"></script>  
 
     <!--Challengue Timeline-->
         <link rel="stylesheet" href="css/matriz_reset.css"> <!-- CSS reset -->
@@ -56,7 +58,14 @@
   
     {{connect.message}}
     {{Credentials}}
-  
+    <br>
+    Timer Test
+            <div class='time-to'>
+              The world might end in...
+             
+              <span secondstimer='' value='10'>&nbsp;</span>
+            
+            </div>
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -149,14 +158,14 @@
       <!-- Navbar
       ================================================== -->
       <br>
-     <div  ng-controller="ChallengueController">
+     <div id="Challen_con" ng-controller="ChallengueController">
 
       <div class="bs-docs-section clearfix " style="  margin-top:-0.5em;">        
         <div class="row" style="margin-top:5px;">
           <h2 class="text-center" style="color: green;;">Matriz de Retos</h2> 
             <div class="col-lg-12">  
               <div class="matriz center-block" >
-                <div class="inside_block center-block">
+                <div class="inside_block center-block" onclick="force_pos()">
                      <div id="table_matriz">datos</div>                                             
                 </div>
                 <!--<table style="width:365px; height:365px;">
@@ -206,7 +215,7 @@
             <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button>-->
 
             <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal fade" data-keyboard="false" data-backdrop="static" id="myModal"  role="dialog">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -226,9 +235,11 @@
                           <div class="events-wrapper">
                             <div class="events">
                               <ol>
-                                <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
-                                <li ng-repeat="challen in list_challen"><a href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" style="left:{{rising($index+1)}}px !important;">{{$index}}</a></li>
-                              
+                                <li><a href="#0" data-date="0/01/2014" class="selected" id="first_el">16 Jan</a></li>
+                                <li ng-repeat="challen in list_challen"><a onclick="add(this)" href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" style="left:{{rising($index+1)}}px !important;">{{$index}}</a>
+                                <a ng-if="$index == 0" onclick="add(this)" href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" style="left:{{rising($index+1)}}px !important;" selected>{{$index}}</a>
+          
+                                </li>                              
                       
                               </ol>
 
@@ -244,20 +255,21 @@
 
                         <div class="events-content">
                           <ol>
-                            <li class="selected" data-date="16/01/2014">
-                              <h2>Horizontal Timeline</h2>
-                              <em>January 16th, 2014</em>
+                            <li class="selected" data-date="0/01/2014">
+                              <h2>Sesion de Retos</h2>
+                              <em>Completalos en el menor tiempo posible</em>
                               <p> 
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+                                Siga las instrucciones como se muestran en pantalla.
                               </p>
                             </li>
 
-                            <li data-date="0/02/2014">
-                              <h2>Event title here</h2>
-                              <em>February 28th, 2014</em>
+                            <li ng-repeat="challen in list_challen" data-date="{{$index+10}}/{{$index+1}}/2014">
+                              <h2>{{challen.titulo}}</h2>
+                              <em>{{challen.Enunciado}}</em>
                               <p> 
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+                                 Respuesta: 
                               </p>
+                              <input type="text" name="answer">
                             </li>
 
               
@@ -277,9 +289,34 @@
                 </div>
               </div>
             </div>
+            
         </div>
 
-        
+        <script>
+        function add(elem)
+       {
+            // get all 'a' elements
+            var a = document.getElementsByTagName('a');
+            // loop through all 'a' elements
+            for (i = 0; i < a.length; i++) {
+                // Remove the class 'active' if it exists
+                a[i].classList.remove('selected')
+            }
+            // add 'active' classs to the element that was clicked
+            
+        }
+
+        function force_pos()
+        {
+          console.log('force');
+          document.getElementById("first_el").style.marginLeft = "-200px";
+          //elem.style.marginLeft = "";
+        }
+
+      </script>
+
+
+
 
       </body>  
       <footer>
