@@ -6,13 +6,28 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 		$scope.question = {};
 		$scope.list_challen = {};
 		$scope.helpindex = 0;
-
+		$scope.percent = 0;
+		$scope.time_aut = 'unauthorized';
+		$scope.copy_aut = 'unauthorized';
 		function notify(){
 			console.log('I hope a miracle');
 		}
 
 		$scope.get = function(){
 			alert('reached bitch');
+		}
+
+
+		$scope.begin = function(aut){
+			if($scope.copy_aut!=$scope.time_aut)
+			{  
+				$scope.copy_aut=$scope.time_aut;
+				console.log('inicia el timer');
+				$scope.timer();
+			}
+			else{
+
+			}
 		}
 
 		$scope.generate = function(id){		
@@ -24,9 +39,11 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 			});
 			requestx.error(function(error){
 
-			}) 		
+			}) 	
+			$scope.copy_aut = 'unauthorized';	
 			//console.log(JSON.stringify(requestx)); 
 			//console.log('lista :'+JSON.stringify($scope.list_cha, null, 4));
+			
 		} 
 
 	    $scope.rising = function(px){
@@ -83,6 +100,24 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
               $compile( document.getElementById('table_matriz') )($scope);
 		}
 
-	  	 
-		
+	  	$scope.timer = function(){
+
+	  		 html = "Tiempo restante <span secondstimer=''  value='35' style='font-size:150%; font-weight:bold; font-family:serif;''>&nbsp;</span>"
+
+	  		 document.getElementById("timer").innerHTML=html;
+
+              $compile( document.getElementById('timer') )($scope);  
+	  	}
+
+	  	$scope.timer_authorize = function(){
+	  		$scope.time_aut = 'authorized';
+	  		$scope.begin();
+	  	}
+
+		$scope.check_ans = function(user_ans,sys_ans){
+			console.log('user '+user_ans+'system '+sys_ans);
+			if(user_ans==sys_ans){
+				$scope.percent += 10;
+			}
+		}
 }]);

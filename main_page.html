@@ -59,13 +59,13 @@
     {{connect.message}}
     {{Credentials}}
     <br>
-    Timer Test
+    <!--Timer Test
             <div class='time-to'>
               The world might end in...
              
               <span secondstimer='' value='10'>&nbsp;</span>
             
-            </div>
+            </div>-->
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -225,9 +225,13 @@
                   <div class="modal-body">
                     <div class="info-box-content">
                       <span class="info-box-text">Desempeño  </span>
-                      <span class="info-box-number">0</span>
+                      <span class="info-box-number">{{percent}}</span>
                       <div class="progress">
-                        <div class="progress-bar" style="width: 0%"></div>
+                        <div class="progress-bar" style="width:  {{percent}}%"></div>
+                      </div>
+
+                      <div class='time-to'>                                    
+                         <div id="timer">timer</div>         
                       </div>               
                       <!--question Timeline -->
                        <section class="cd-horizontal-timeline">
@@ -235,10 +239,8 @@
                           <div class="events-wrapper">
                             <div class="events">
                               <ol>
-                                <li><a href="#0" data-date="0/01/2014" class="selected" id="first_el">16 Jan</a></li>
-                                <li ng-repeat="challen in list_challen"><a onclick="add(this)" href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" style="left:{{rising($index+1)}}px !important;">{{$index}}</a>
-                                <a ng-if="$index == 0" onclick="add(this)" href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" style="left:{{rising($index+1)}}px !important;" selected>{{$index}}</a>
-          
+                                <li><a href="#0" data-date="0/01/2014" class="selected" id="first_el">Presentación</a></li>
+                                <li ng-repeat="challen in list_challen"><a onclick="add(this)" href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" ng-click="timer_authorize()"  style="left:{{rising($index+1)}}px !important;">{{$index}}</a>     
                                 </li>                              
                       
                               </ol>
@@ -260,6 +262,8 @@
                               <em>Completalos en el menor tiempo posible</em>
                               <p> 
                                 Siga las instrucciones como se muestran en pantalla.
+                                Presiona los numeros para ver las preguntas.
+                                Dispones de un limite de tiempo ¡No lo desperdicies¡
                               </p>
                             </li>
 
@@ -269,7 +273,7 @@
                               <p> 
                                  Respuesta: 
                               </p>
-                              <input type="text" name="answer">
+                              <input type="text" name="answer" ng-model="ans_data" ng-blur="check_ans(ans_data,challen.respuesta)" >
                             </li>
 
               
@@ -278,11 +282,12 @@
                       </section>
                       <!--question Timeline -->
                       <span class="progress-description ng-binding">
-                         porcentaje : 0%
+                         porcentaje : {{percent}}
                       </span>
                     </div>
                     <!--<p> {{list_challen}} </p> <li  ng-repeat="challen in list_challen"><a>{{challen.id}}</a></li>--> 
                   </div>
+                 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" disabled>Close</button>
                   </div>
@@ -302,6 +307,8 @@
                 // Remove the class 'active' if it exists
                 a[i].classList.remove('selected')
             }
+            console.log('intento cambio');
+           
             // add 'active' classs to the element that was clicked
             
         }
@@ -310,6 +317,7 @@
         {
           console.log('force');
           document.getElementById("first_el").style.marginLeft = "-200px";
+
           //elem.style.marginLeft = "";
         }
 
