@@ -100,7 +100,7 @@ app.factory('Observer',[function()
     return { 
     notify: function(){  
         console.log('Voy a notificar');
-        angular.element(document.getElementById('Challen_con')).scope().get();//linea sagrada
+        angular.element(document.getElementById('Challen_con')).scope().timer_send();//linea sagrada
       }
     };
   }

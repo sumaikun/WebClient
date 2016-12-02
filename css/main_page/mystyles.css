@@ -49,4 +49,11 @@
 	background:#424242; 
 
 }
-   
+
+.medal
+{
+   background-image:url('../../css/images/medal.png');
+   background-repeat:no-repeat;
+   background-size: contain;
+    
+}   

@@ -37,27 +37,30 @@
 
     <!--services-->
       <script type="text/javascript" src='js/Services/UserService.js'></script>
-      <script type="text/javascript" src="js/Services/ChallengueService.js"></script>  
+      <script type="text/javascript" src="js/Services/ChallengueService.js"></script>
+      <script type="text/javascript" src="js/Services/AchivementService.js"></script>  
 
     <!--Controllers-->
       <script src='js/Controllers/UserController.js'></script>
       <script src='js/Controllers/ChallengueController.js'></script>
+      <script src="js/Controllers/AchivementController.js"></script>
 
     <!--Directives-->
       <script type="text/javascript" src="js/Directives/timer.js"></script>  
 
-    <!--Challengue Timeline-->
-        <link rel="stylesheet" href="css/matriz_reset.css"> <!-- CSS reset -->
-        <link rel="stylesheet" href="css/matriz_style.css"> <!-- Resource style -->
-        <script src="js/programs/modernizr.js"></script> <!-- Modernizr -->  
+    <!--Challengue Carousel-->
+      <link href="carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
+      <link href="carousel/owl-carousel/owl.theme.css" rel="stylesheet">
+      <link href="carousel/owl-carousel/owl.transitions.css" rel="stylesheet">
         
   </head>
 
   <body ng-app="Appi">
+
   <div  ng-controller="UserController">   
   
     {{connect.message}}
-    {{Credentials}}
+    <!--{{Credentials}}-->
     <br>
     <!--Timer Test
             <div class='time-to'>
@@ -66,300 +69,133 @@
               <span secondstimer='' value='10'>&nbsp;</span>
             
             </div>-->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="#" class="navbar-brand">Sistema de Aprendizaje</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+      <script>
+        console.log('pagina principal');
+      </script>      
+      <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="#/" class="navbar-brand">Sistema de Aprendizaje</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
+            </button>
+          </div>
+          <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Cursos<span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
                 <li><a href="../default/">Default</a></li>
                 <li class="divider"></li>
                 <li><a href="../cerulean/">Matriz de Retos</a></li>
-                <li><a href="../cosmo/">Cosmo</a></li>
-                <li><a href="../cyborg/">Cyborg</a></li>
-                <li><a href="../darkly/">Darkly</a></li>
-                <li><a href="../flatly/">Flatly</a></li>
-                <li><a href="../journal/">Journal</a></li>
-         
               </ul>
-            </li>           
-          </ul>
+              </li>           
+            </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-           <li>
-               <span  class="navbar-brand">{{Credentials.name}}</span>
-              <img src="http://localhost/Gappi/public/profiles/{{Credentials.image}}" class="img-circle nav_image" alt="User Image">          
-           </li>                  
-            <li class="dropdown">            
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Sesion <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="http://jsfiddle.net/bootswatch/h3fgn55j/">Logros</a></li>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <span  class="navbar-brand">{{Credentials.name}}</span>
+                <img src="http://localhost/Gappi/public/profiles/{{Credentials.image}}" class="img-circle nav_image" alt="User Image">          
+              </li>                  
+              <li class="dropdown">            
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Sesion <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="#/Achivements">Logros</a></li>
                 <li class="divider"></li>
                 <li><a href="" ng-click="SignOut()">Cerrar Sesión</a></li>              
-              </ul>
-            </li>
-          </ul>
-        </div>
+                </ul>
+              </li>
+            </ul>
+          </div>
       </div>
     </div>
-   </div>       
-       
-
-    <div class="container">
-
-      <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>Bienvenidos</h1>
-            <p class="lead">Habilidades Disponibles</p>
-          </div>
-          <div class="col-lg-4 col-md-5 col-sm-6">
-            <div class="sponsor">
-              <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootswatchcom" id="_carbonads_js"></script>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-4">
-            <div class="list-group table-of-contents">
-              <a class="list-group-item" href="#navbar">Matriz de Retos</a>
-              <a class="list-group-item" href="#buttons">Buttons</a>
-              <a class="list-group-item" href="#typography">Typography</a>
-              <a class="list-group-item" href="#tables">Tables</a>
-            
-            </div>
-          </div>
-          <div class="col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-5 col-sm-offset-0 col-sm-8 visible-md visible-lg">
-            <br>
-            <br>            
-             <div class="owlteacher"  style=" height: 300px; ">            
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>        
-
-      <div class="row" style="margin-top:5px;">
-        <div class="col-lg-12">  
-          <iframe src="http://localhost/WebClient/clouds.html"  style="width: 100%; height: 500px; position: absolute;"">
-          </iframe>
-        </div>  
-      </div> 
-
-      <!-- Navbar
-      ================================================== -->
-      <br>
-     <div id="Challen_con" ng-controller="ChallengueController">
-
-      <div class="bs-docs-section clearfix " style="  margin-top:-0.5em;">        
-        <div class="row" style="margin-top:5px;">
-          <h2 class="text-center" style="color: green;;">Matriz de Retos</h2> 
-            <div class="col-lg-12">  
-              <div class="matriz center-block" >
-                <div class="inside_block center-block" onclick="force_pos()">
-                     <div id="table_matriz">datos</div>                                             
-                </div>
-                <!--<table style="width:365px; height:365px;">
-                  <tr>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                    <td style="text-align:center"><button class="btn">ds</button></td>
-                  </tr>
-                </table>-->             
-              </div>                             
-            </div>   
-          </div>
-        </div>
-      
-
-          <div class="bs-docs-section clearfix " style="  margin-top:1.5em;">
-            <div class="row" style="margin-top:5px;">
-              <h2 class="text-center" style="color: green;;">Matriz de Retos</h2>
-              <div class="container">           
-                <p>{{title}}</p>
-                <p>{{connect.message}}</p>
-                <p>{{col_row}}</p>
-              </div>        
-            </div>                             
-          </div>
-
-              <!-- Trigger the modal with a button -->
-            <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button>-->
-
-            <!-- Modal -->
-            <div class="modal fade" data-keyboard="false" data-backdrop="static" id="myModal"  role="dialog">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{question.title}}</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="info-box-content">
-                      <span class="info-box-text">Desempeño  </span>
-                      <span class="info-box-number">{{percent}}</span>
-                      <div class="progress">
-                        <div class="progress-bar" style="width:  {{percent}}%"></div>
-                      </div>
-
-                      <div class='time-to'>                                    
-                         <div id="timer">timer</div>         
-                      </div>               
-                      <!--question Timeline -->
-                       <section class="cd-horizontal-timeline">
-                        <div class="timeline">
-                          <div class="events-wrapper">
-                            <div class="events">
-                              <ol>
-                                <li><a href="#0" data-date="0/01/2014" class="selected" id="first_el">Presentación</a></li>
-                                <li ng-repeat="challen in list_challen"><a onclick="add(this)" href="#0" data-date="{{$index+10}}/{{$index+1}}/2014" ng-click="timer_authorize()"  style="left:{{rising($index+1)}}px !important;">{{$index}}</a>     
-                                </li>                              
-                      
-                              </ol>
-
-                              <span class="filling-line" aria-hidden="true"></span>
-                            </div> <!-- .events -->
-                          </div> <!-- .events-wrapper -->
-                            
-                          <ul class="cd-timeline-navigation">
-                            <li><a href="#0" class="prev inactive">Prev</a></li>
-                            <li><a href="#0" class="next">Next</a></li>
-                          </ul> <!-- .cd-timeline-navigation -->
-                        </div> <!-- .timeline -->
-
-                        <div class="events-content">
-                          <ol>
-                            <li class="selected" data-date="0/01/2014">
-                              <h2>Sesion de Retos</h2>
-                              <em>Completalos en el menor tiempo posible</em>
-                              <p> 
-                                Siga las instrucciones como se muestran en pantalla.
-                                Presiona los numeros para ver las preguntas.
-                                Dispones de un limite de tiempo ¡No lo desperdicies¡
-                              </p>
-                            </li>
-
-                            <li ng-repeat="challen in list_challen" data-date="{{$index+10}}/{{$index+1}}/2014">
-                              <h2>{{challen.titulo}}</h2>
-                              <em>{{challen.Enunciado}}</em>
-                              <p> 
-                                 Respuesta: 
-                              </p>
-                              <input type="text" name="answer" ng-model="ans_data" ng-blur="check_ans(ans_data,challen.respuesta)" >
-                            </li>
-
-              
-                          </ol>
-                        </div> <!-- .events-content -->
-                      </section>
-                      <!--question Timeline -->
-                      <span class="progress-description ng-binding">
-                         porcentaje : {{percent}}
-                      </span>
-                    </div>
-                    <!--<p> {{list_challen}} </p> <li  ng-repeat="challen in list_challen"><a>{{challen.id}}</a></li>--> 
-                  </div>
-                 
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" disabled>Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-        </div>
-
-        <script>
-        function add(elem)
-       {
-            // get all 'a' elements
-            var a = document.getElementsByTagName('a');
-            // loop through all 'a' elements
-            for (i = 0; i < a.length; i++) {
-                // Remove the class 'active' if it exists
-                a[i].classList.remove('selected')
-            }
-            console.log('intento cambio');
-           
-            // add 'active' classs to the element that was clicked
-            
-        }
-
-        function force_pos()
-        {
-          console.log('force');
-          document.getElementById("first_el").style.marginLeft = "-200px";
-
-          //elem.style.marginLeft = "";
-        }
-
-      </script>
-
-
-
-
-      </body>  
-      <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-
-               <ul class="list-unstyled">
-                <li class="pull-right"><a href="#top">Back to top</a></li>
-                <li><a href="http://news.bootswatch.com" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
-                <li><a href="http://feeds.feedburner.com/bootswatch">RSS</a></li>
-                <li><a href="https://twitter.com/bootswatch">Twitter</a></li>
-                <li><a href="https://github.com/thomaspark/bootswatch/">GitHub</a></li>
-                <li><a href="../help/#api">API</a></li>
-                <li><a href="../help/#support">Support</a></li>
-              </ul>
-              <p>Made by <a href="http://thomaspark.co" rel="nofollow">Thomas Park</a>. Contact him at <a href="mailto:thomas@bootswatch.com">thomas@bootswatch.com</a>.</p>
-              <p>Code released under the <a href="https://github.com/thomaspark/bootswatch/blob/gh-pages/LICENSE">MIT License</a>.</p>
-              <p>Based on <a href="http://getbootstrap.com" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>         
-
-            </div>
-          </div>
-        </div>
-      </footer>
-
-
+ </div>       
+  <section style="min-height:400px!important">      
+    <div ng-view>   
     </div>
+  </section>  
+
+ <style>
+  #owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+</body>  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+
+         <ul class="list-unstyled">
+          <li class="pull-right"><a href="#top">Back to top</a></li>
+          <li><a href="http://news.bootswatch.com" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
+          <li><a href="http://feeds.feedburner.com/bootswatch">RSS</a></li>
+          <li><a href="https://twitter.com/bootswatch">Twitter</a></li>
+          <li><a href="https://github.com/thomaspark/bootswatch/">GitHub</a></li>
+          <li><a href="../help/#api">API</a></li>
+          <li><a href="../help/#support">Support</a></li>
+        </ul>
+        <p>Made by <a href="http://thomaspark.co" rel="nofollow">Thomas Park</a>. Contact him at <a href="mailto:thomas@bootswatch.com">thomas@bootswatch.com</a>.</p>
+        <p>Code released under the <a href="https://github.com/thomaspark/bootswatch/blob/gh-pages/LICENSE">MIT License</a>.</p>
+        <p>Based on <a href="http://getbootstrap.com" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>         
+
+      </div>
+    </div>
+  </div>
+</footer>
 
 
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="css/visual_js/bootstrap.min.js"></script>
-    <script src="css/visual_js/custom.js"></script>
-    <!--controlador del timelinematriz-->
-    <script src="js/programs/main_matriz.js"></script>
-  </body>
+
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="css/visual_js/bootstrap.min.js"></script>
+  <script src="css/visual_js/custom.js"></script>
+  <!--controlador del slider-->
+  <script src="carousel/owl-carousel/owl.carousel.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      var owl = $("#owl-demo");
+
+      owl.owlCarousel({
+        navigation : true,
+        singleItem : true,
+        transitionStyle : "fade"
+      });
+
+
+  
+      /*
+      //Select Transtion Type
+      $("#transitionType").change(function(){
+        var newValue = $(this).val();
+
+        //TransitionTypes is owlCarousel inner method.
+        owl.data("owlCarousel").transitionTypes(newValue);
+
+        //After change type go to next slide
+        owl.trigger("owl.next");
+      });*/
+    });
+
+    function execute_carousel()
+  {
+    console.log('intento');
+    var owl = $("#owl-demo");
+     owl.owlCarousel({
+      navigation : true,
+      singleItem : true,
+      transitionStyle : "fade"
+      });      
+  }
+  </script>
+
 </html>

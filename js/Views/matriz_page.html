@@ -1,0 +1,177 @@
+   
+<div class="container">
+  <div class="page-header" id="banner">
+    <div class="row">
+      <div class="col-lg-8 col-md-7 col-sm-6">
+      <h1>Bienvenidos</h1>
+      <p class="lead">Habilidades Disponibles</p>
+      </div>
+      <div class="col-lg-4 col-md-5 col-sm-6">
+      <!--
+      <div class="sponsor">
+      <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootswatchcom" id="_carbonads_js"></script>
+      </div>
+      -->  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-4">
+        <div class="list-group table-of-contents">
+          <a class="list-group-item" href="#Nav_ma">Matriz de Retos</a>
+        </div>
+      </div>
+      <div class="col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-5 col-sm-offset-0 col-sm-8 visible-md visible-lg">
+        <br>
+        <br>            
+        <div class="owlteacher"  style=" height: 300px; ">            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row" style="margin-top:5px;">
+    <div class="col-lg-12">  
+    <!--<iframe src="http://localhost/WebClient/clouds.html"  style="width: 100%; height: 500px; position: absolute;"">
+    </iframe>-->
+    </div>  
+  </div> 
+
+  <br>
+  <div id="Challen_con" ng-controller="ChallengueController">
+
+    <div class="bs-docs-section clearfix "  id="Nav_ma" style="  margin-top:-0.5em;">        
+      <div class="row" style="margin-top:5px;">
+        <h2 class="text-center" style="color: green;;">Matriz de Retos</h2>
+         <div class="col-lg-offset-1 col-lg-1 col-sm-12">
+          Calificación
+          <table>
+            <tr><th>Excelente</th><td><div class='block' style="margin-left:5px !important; background-color:#3ADF00;"></div></td></tr>
+            <tr><th>Sobresaliente</th><td><div class='block' style="margin-left:5px !important; background-color:#00FF80;"></div></td></tr>
+            <tr><th>Aceptable</th><td><div class='block' style="margin-left:5px !important; background-color:#2EFEC8"></div></td></tr>
+            <tr><th>Insuficiente</th><td><div class='block' style="margin-left:5px !important; background-color:#CEF6EC;"></div></td></tr>
+          </table>
+        </div> 
+        <div class="col-lg-12">  
+          <div class="matriz center-block" >
+            <div class="inside_block center-block" >
+               <div id="table_matriz">datos</div>                                             
+            </div>         
+          </div>                                       
+        </div>   
+      </div>
+    </div>
+
+
+    <div class="bs-docs-section clearfix " style="  margin-top:1.5em;">
+      <div class="row" style="margin-top:5px;">
+        <h2 class="text-center" style="color: green;;">Matriz de Retos</h2>
+        <div class="container">           
+          <p>{{title}}</p>
+          <p>{{connect.message}}</p>
+          <p></p>
+        </div>        
+      </div>                             
+    </div>
+
+    <div id="demo">
+      <div class="col-lg-12">
+      <div class="row">
+        <div class="span12">
+        <div id="owl-demo" class="owl-carousel">
+          <div class="item"><img src="carousel/images/fullimage4.jpg"></div>
+          <div class="item"><img src="carousel/images/fullimage5.jpg"></div>
+          <div class="item"><img src="carousel/images/fullimage6.jpg"></div>
+          <div class="item"><img src="carousel/images/fullimage7.jpg"></div>
+          <div class="item"><img src="carousel/images/fullimage1.jpg" ></div>
+          <div class="item"><img src="carousel/images/fullimage2.jpg"></div>
+          <div class="item"><img src="carousel/images/fullimage3.jpg"></div>
+        </div>
+        <label for="transitionType">Select Transition Type</label>
+        <!--<select name="transitionType" id="transitionType">
+          <option value="fade">fade</option>
+          <option value="backSlide">backSlide</option>
+          <option value="goDown">goDown</option>
+          <option value="fadeUp">fadeUp</option>
+        </select>-->
+        </div>
+      </div>
+      </div>
+    </div>
+    <!--{{col_row}}-->  
+</div>
+
+
+      
+              <!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button>-->
+
+<!-- Modal -->
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="myModal"  role="dialog">
+  <div ng-controller="ChallengueController">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{question.title}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="info-box-content">
+          <span class="info-box-text">Desempeño  </span>
+          <span class="info-box-number">{{percent}}</span>
+        <div class="progress">
+          <div class="progress-bar" style="width:  {{percent}}%"></div>
+        </div>
+
+        <!--input para verificar si la respuesta ya fue enviada (timer o boton enviar)-->
+        <input id="type_answer" type="hidden" value="automatico">
+        <input id="ans_id" type="hidden" value="0">
+        <input id="val_score" type="hidden" value="0">
+        <div class='time-to'>                                    
+          <div id="timer">timer</div>         
+        </div>               
+        <!--question Timeline -->
+        <section>      
+        
+           <div >
+            <div class="item">
+              <h2>Sesion de Retos</h2>
+                <em>Completalos en el menor tiempo posible</em>
+                <p> 
+                  Siga las instrucciones como se muestran en pantalla.
+                  Deja el numero correspondiente en la casilla para responder las preguntas.
+                  Dispones de un limite de tiempo ¡No lo desperdicies¡
+                </p>        
+            </div>
+       
+
+            <div class="col-lg-3" ng-repeat="challen in list_challen">
+              <h2>{{challen.titulo}}</h2>
+              <em>{{challen.Enunciado}}</em>
+              <p> 
+                 Respuesta: 
+              </p>
+              <input type="text" name="answer" ng-model="ans_data" ng-blur="check_ans(ans_data,challen.respuesta)" ng-click="timer_authorize()" >
+            </div>             
+          </div>
+
+        </section>       
+        <!--question Timeline -->
+        <span class="progress-description ng-binding">
+        porcentaje : {{percent}}
+        </span>
+        </div>
+        <!--<p> {{list_challen}} </p> <li  ng-repeat="challen in list_challen"><a>{{challen.id}}</a></li>--> 
+        </div>
+
+        <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="send()" id="send_button" data-dismiss="modal" disabled>Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+
