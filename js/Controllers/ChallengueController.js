@@ -125,6 +125,7 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 		init();
 		//En este punto inicializare todas las funciones asociadas al onload de una pagina
 		execute_carousel();
+		
 
 		//Función encargada de generar el html de la matriz de retos
 		var forms = function () {			 

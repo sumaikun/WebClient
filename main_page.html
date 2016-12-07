@@ -44,6 +44,7 @@
       <script src='js/Controllers/UserController.js'></script>
       <script src='js/Controllers/ChallengueController.js'></script>
       <script src="js/Controllers/AchivementController.js"></script>
+      <script src='js/Controllers/AskController.js'></script>
 
     <!--Directives-->
       <script type="text/javascript" src="js/Directives/timer.js"></script>  
@@ -191,6 +192,16 @@
     console.log('intento');
     var owl = $("#owl-demo");
      owl.owlCarousel({
+      navigation : true,
+      singleItem : true,
+      transitionStyle : "fade"
+      });      
+  }
+
+     function question_carousel()
+  {
+    var ask = $("#ask-demo");
+     ask.owlCarousel({
       navigation : true,
       singleItem : true,
       transitionStyle : "fade"
