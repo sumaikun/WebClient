@@ -1,4 +1,7 @@
-var app = angular.module("Appi",['ngRoute']);
+var app = angular.module("Appi",['ngRoute','chieffancypants.loadingBar', 'ngAnimate']);
+app.config(function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+  });
 app.config(function ($routeProvider) { 
   console.log($routeProvider);
   $routeProvider
@@ -9,4 +12,4 @@ app.config(function ($routeProvider) {
     .otherwise({
       templateUrl: 'js/Views/matriz_page.html' 
     });
-});
+	});

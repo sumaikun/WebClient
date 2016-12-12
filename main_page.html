@@ -27,10 +27,19 @@
      })();
 
     </script>
+
+    <!--iframe-->
      <link rel="stylesheet" href="css/main_page/mystyles.css">
      <link rel="stylesheet" type="text/css" href="css/main_page/clouds.css">
+
+    <!--Angular--> 
      <script type="text/javascript" src="js/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.min.js"></script>
+
+    <!-- loadingbar -->
+    <script src="loadingbar/loading-bar.js"></script>
+    <link href='loadingbar/loading-bar.css' rel='stylesheet' />
 
     <!--Modules-->
       <script src='js/Modules/app.js'></script>
@@ -38,7 +47,8 @@
     <!--services-->
       <script type="text/javascript" src='js/Services/UserService.js'></script>
       <script type="text/javascript" src="js/Services/ChallengueService.js"></script>
-      <script type="text/javascript" src="js/Services/AchivementService.js"></script>  
+      <script type="text/javascript" src="js/Services/AchivementService.js"></script>
+      <script type="text/javascript" src="js/Services/AskService.js"></script>  
 
     <!--Controllers-->
       <script src='js/Controllers/UserController.js'></script>
@@ -53,10 +63,15 @@
       <link href="carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
       <link href="carousel/owl-carousel/owl.theme.css" rel="stylesheet">
       <link href="carousel/owl-carousel/owl.transitions.css" rel="stylesheet">
-        
+    
+    <!--Success Check-->
+      <link rel="stylesheet" type="text/css" href="css/main_page/successcheck.css">    
   </head>
 
   <body ng-app="Appi">
+
+
+
 
   <div  ng-controller="UserController">   
   

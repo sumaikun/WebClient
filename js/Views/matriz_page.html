@@ -116,7 +116,7 @@
         <h4 class="modal-title">{{question.title}}</h4>
       </div>
       <div class="modal-body">
-        <div class="info-box-content">
+        <div class=text/css"info-box-content">
           <span class="info-box-text">Desempeño  </span>
           <span class="info-box-number">{{percent}}</span>
         <div class="progress">
@@ -172,27 +172,37 @@
   </div>
   </div>
 
+  <style type="text/css">
+    #Ask_title{
+      font-size: 300%;
+      color: black;
+      font-size: bold;
+    }
+    #Ask_content{
+      color:#848484;
+      font-size: 120%;
+      font-style: italic;
+    }
+  </style>
 
   <div id="Ask_con" ng-controller="AskController">
-      <div id="demo">
-        <div class="col-lg-12">
-        <div class="row">
-          <div class="span12">
-          <div id="ask-demo" class="owl-carousel">
-            <div class="item">pregunta 1</div>
-            <div class="item">pregunta 2</div>
-            <div class="item">pregunta 3</div>
-            <div class="item">pregunta 4</div>
-            <div class="item">pregunta 5</div>
-            <div class="item">pregunta 6</div>
-            <div class="item">pregunta 7</div>
-            <div class="item">pregunta 8</div>
-            <div class="item">pregunta 9</div>
-            <div class="item">pregunta 10</div>
-          </div>
-          </div>
-        </div>
-        </div>
+      {{title}}      
+    <div class="col-lg-12">
+      <div class="row">
+        <button class="btn btn-warning" ng-click="get_ask()"> Generar Pregunta</button>
+         <button class="btn btn-success " ng-click="send_answer()"> Calificar</button>
+         <div class="row">
+          <div id="Ask_title" class="col-lg-6">Titulo</div>
+          <div id="response_animation" class="col-lg-6">
+            
+         </div>
+        </div>  
+          <div id="Ask_content">Contenido de la pregunta</div>
+          <div id="Ask_answer" style="margin-top:30px;"> <input type="number" step="any" ng-model="ans_ask" class="form-control"></div>
+          <span style="color:red; font-weight:bold;">{{connect.message}}</span>
+
       </div>
+      {{ans}}
+    </div>      
   </div>
 </div>
