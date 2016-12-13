@@ -45,7 +45,7 @@ app.controller('AskController',['$scope','AskResource','$window','$compile','cfp
 			$scope.ans = response;
 			if($scope.ans.message=='Correcto')
 			{
-				$("#response_animation").append("<div class='checkmark-circle'><div class='background' style='height:90%;width:90%'></div><div class='checkmark draw'></div></div>");			
+				$("#response_animation").append("<div class='checkmark-circle' style='margin-top:-50px'><div class='background' style='height:90%;width:90%'></div><div class='checkmark draw'></div></div>");			
 			}
 		});
 		request.error(function(error){
