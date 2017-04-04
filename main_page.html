@@ -41,6 +41,11 @@
     <script src="loadingbar/loading-bar.js"></script>
     <link href='loadingbar/loading-bar.css' rel='stylesheet' />
 
+    <!--slider-->
+
+   
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
+
     <!--Modules-->
       <script src='js/Modules/app.js'></script>
 
@@ -48,16 +53,22 @@
       <script type="text/javascript" src='js/Services/UserService.js'></script>
       <script type="text/javascript" src="js/Services/ChallengueService.js"></script>
       <script type="text/javascript" src="js/Services/AchivementService.js"></script>
-      <script type="text/javascript" src="js/Services/AskService.js"></script>  
+      <script type="text/javascript" src="js/Services/AskService.js"></script>
+      <script type="text/javascript" src="js/Services/ExamsService.js"></script>
+      <script type="text/javascript" src="js/Services/DinamicService.js"></script>
+
 
     <!--Controllers-->
       <script src='js/Controllers/UserController.js'></script>
       <script src='js/Controllers/ChallengueController.js'></script>
       <script src="js/Controllers/AchivementController.js"></script>
       <script src='js/Controllers/AskController.js'></script>
+      <script type="text/javascript" src='js/Controllers/ExamsController.js'></script>
+      <script type="text/javascript" src='js/Controllers/DinamicController.js'></script>
 
     <!--Directives-->
-      <script type="text/javascript" src="js/Directives/timer.js"></script>  
+      <script type="text/javascript" src="js/Directives/timer.js"></script>
+      <script type="text/javascript" src="js/Directives/confirm.js"></script>  
 
     <!--Challengue Carousel-->
       <link href="carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
@@ -103,9 +114,9 @@
               <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Cursos<span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
-                <li><a href="../default/">Default</a></li>
+                <li><a href="#/Dinamic">Talleres dinamicos</a></li>
                 <li class="divider"></li>
-                <li><a href="../cerulean/">Matriz de Retos</a></li>
+                <li><a href="#/">Matriz de Retos</a></li>
               </ul>
               </li>           
             </ul>
@@ -113,12 +124,13 @@
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <span  class="navbar-brand">{{Credentials.name}}</span>
-                <img src="http://localhost/Gappi/public/profiles/{{Credentials.image}}" class="img-circle nav_image" alt="User Image">          
+                <img src="http://localhost/Eappi/public/profiles/{{Credentials.image}}" class="img-circle nav_image" alt="User Image">          
               </li>                  
               <li class="dropdown">            
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Sesion <span class="caret"></span></a>
                 <ul class="dropdown-menu" aria-labelledby="download">
                 <li><a href="#/Achivements">Logros</a></li>
+                <li><a href="#/Exams">Talleres</a></li>
                 <li class="divider"></li>
                 <li><a href="" ng-click="SignOut()">Cerrar Sesión</a></li>              
                 </ul>
@@ -176,6 +188,7 @@
   <script src="css/visual_js/custom.js"></script>
   <!--controlador del slider-->
   <script src="carousel/owl-carousel/owl.carousel.js"></script>
+
   <script>
     $(document).ready(function() {
 

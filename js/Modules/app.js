@@ -7,8 +7,13 @@ app.config(function ($routeProvider) {
   $routeProvider
   .when('/Achivements',{      
       templateUrl: 'js/Views/Achivements.html' 
-    })    
-   
+    })
+  .when('/Exams',{      
+      templateUrl: 'js/Views/Exams.html' 
+    })
+  .when('/Dinamic',{      
+      templateUrl: 'js/Views/Dinamic.html' 
+    })     
     .otherwise({
       templateUrl: 'js/Views/matriz_page.html' 
     });

@@ -5,7 +5,7 @@ app.factory('UserResource',['$http','$q',function($http,$q){
     var promise = defered.promise;
 
     UserResource.test = function(){ 
-	return $http.get("http://localhost/Gappi/public/User")
+	return $http.get("http://localhost/Eappi/public/User")
 		.success(function(data){
 			console.log(data);
 			return data;
@@ -17,7 +17,7 @@ app.factory('UserResource',['$http','$q',function($http,$q){
 
 	UserResource.login = function(dt){
 		console.log(dt);
-		return $http.post("http://localhost/Gappi/public/log",dt)
+		return $http.post("http://localhost/Eappi/public/log",dt)
 		.success(function(data){
 
         	console.log('service data '+ JSON.stringify(data));
@@ -34,7 +34,7 @@ app.factory('UserResource',['$http','$q',function($http,$q){
 
 	UserResource.credentials = function(){
 		console.log('ejecuto request');
-		$http.get("http://localhost/Gappi/public/credentials")
+		$http.get("http://localhost/Eappi/public/credentials")
 		.success(function(data){
 
         	console.log('funcion enviada');
@@ -49,7 +49,7 @@ app.factory('UserResource',['$http','$q',function($http,$q){
 
 	UserResource.logout = function(){
 		console.log('ejecuto request');
-		$http.get("http://localhost/Gappi/public/LogOut")
+		$http.get("http://localhost/Eappi/public/LogOut")
 		.success(function(data){
 
         	console.log('funcion enviada');

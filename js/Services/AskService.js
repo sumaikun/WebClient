@@ -5,7 +5,7 @@ app.factory('AskResource',['$http','$q',function($http,$q){
     var promise = defered.promise;
 
     AskResource.getAsk = function(){ 
-	 return $http.get("http://localhost/Gappi/public/generate_rule3question")
+	 return $http.get("http://localhost/Eappi/public/generate_rule3question")
 		.success(function(data){
         	console.log('funcion enviada');
         	return data;
@@ -18,7 +18,7 @@ app.factory('AskResource',['$http','$q',function($http,$q){
 	}
 
 	AskResource.sendAns = function(id,answer){ 
-	 return $http.get("http://localhost/Gappi/public/qualify_ask/"+id+"/"+answer)
+	 return $http.get("http://localhost/Eappi/public/qualify_ask/"+id+"/"+answer)
 		.success(function(data){
         	console.log('funcion enviada');
         	return data;

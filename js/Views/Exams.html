@@ -1,0 +1,111 @@
+<style>
+
+
+#inner {
+  margin-left: 40px;
+}
+
+</style>
+
+<style type="text/css">
+	body {
+  background: #f1f1f1;
+  font-family:helvetica neue, helvetica, arial, sans-serif;
+  font-weight:200;
+}
+
+#notebook-paper {
+  width:960px;
+  height:1109px;
+  background: linear-gradient(to bottom,white 29px,#00b0d7 1px);
+  margin:50px auto;
+  background-size: 100% 30px;
+  position:relative;
+  padding-top:150px;
+  padding-left:160px;
+  padding-right:20px;
+  overflow:hidden;
+  border-radius:5px;
+  -webkit-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+  -moz-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+  -ms-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+  -o-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+  box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+  &:before {
+    content:'';
+    display:block;
+    position:absolute;
+    z-index:1;
+    top:0;
+    left:140px;
+    height:100%;
+    width:1px;
+    background:#db4034;
+  }
+  header {
+    height:150px;
+    width:100%;
+    background:white;
+    position:absolute;
+    top:0;
+    left:0;
+    h1 {
+      font-size:60px;
+      line-height:60px;
+      padding:127px 20px 0 160px;
+    }
+  }
+  #content {
+    margin-top:67px;
+    font-size:20px;
+    line-height:30px;
+    p {
+      margin:0 0 30px 0;
+    }
+  }
+</style>
+<div id="notebook-paper">
+	<div style="margin-left:-100px; margin-top:-130px;">	
+	  <header>
+	    <h1>Talleres</h1>
+	  </header>
+	  <div id="content">
+
+	    <div ng-controller="ExamsController">
+		
+			{{connect.message}}
+			<div class="col-lg-12">						
+				<style type="text/css">
+				    #Ask_title{
+				      font-size: 300%;
+				      color: black;
+				      font-size: bold;
+				    }
+				    #Ask_content{
+				      color:#848484;
+				      font-size: 110%;
+				      font-style: italic;
+              max-width: 850px;
+				    }
+		  		</style>
+
+				  <div id="Ask_con" class="container" ng-controller="AskController">
+				      {{title}}      
+				    <div class="col-lg-12">
+				      <div class="row" ng-repeat="question in questions">
+  			         <div class="row">
+  				          <div id="Ask_title" class="col-lg-6"> {{($index+1)}}.  <span style="font-size:70%;">{{question.titulo}}</span> </div>  				          
+  				        </div>  
+  				          <div id="Ask_content">{{question.Enunciado}}</div>
+  				          <div id="Ask_answer" style="margin-top:30px;"> <input type="number" step="any" ng-model="ans_ask"></div>
+				      </div>              
+              <span style="color:red; font-weight:bold;">{{connect.message}}</span>
+				      {{ans}}
+				    </div>
+            <button class="btn btn-success">Enviar</button>      
+				  </div>			
+			</div>	
+		</div>
+	  </div>
+	</div>  
+</div>

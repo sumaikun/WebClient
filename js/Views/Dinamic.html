@@ -1,0 +1,173 @@
+<div class="container">
+  <div class="col-lg-12" ng-controller="DinamicController">
+    {{title}}
+    <h1>talleres dinamicos</h1>
+    <div class="row">
+      <h3>Serviceendpoint</h3>
+      <table class="table table-bordered table-striped">
+          <thead class="thead-inverse">
+            <tr>
+              <th>Nombre</th>
+              <th>Codigo</th>
+              <th>Descripción</th>
+              <th>Tipo</th>
+              <th>Curso</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="skill in skills">   
+            <tr>
+              <td>{{skill.nameSkill}}</td>
+              <td>{{skill.codeSkill}}</td>
+              <td>{{skill.descriptionSkill}}</td>
+              <td>{{skill.kind}}</td>
+              <td>{{skill.nameCourse}}</td>
+              <td><a ng-click="problems_skill(skill.codeSkill)"><button class="btn btn-success">Ver problemas</button></a></td>
+            </tr>
+          </tbody>
+        </table>
+        {{connect.message}}
+    </div>
+    <div class="row">
+      <h3>Studentendpoint</h3>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-inverse">
+            <tr>
+              <th>Nombre</th>
+              <th>Codigo</th>
+              <th>Tipo</th>
+              <th>Edad</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="student in students">
+            <tr>
+              <td>{{student.nameStudent}} {{student.lastNameStudent}}</td>
+              <td>{{student.codeStudent}}</td>
+              <td>{{student.kind}}</td>
+              <td>{{student.age}}</td>
+              <td><a ng-click="edit_Student(student)" ng-confirm-click="Desea editar"><button    class="btn btn-warning">Editar</button></a></td>
+              <td><a ng-click="delete_student(student.codeStudent)" ng-confirm-click="¿Esta seguro de eliminar?"><button class="btn btn-danger">Eliminar</button></a></td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Crear nuevo estudiante
+    </button>
+      {{connect.message}}
+    </div>
+    <div class="row">
+      <h3>Teacherendpoint</h3>
+    </div>
+    
+
+<!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Crear Estudiante</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="reset()"  ng-submit="new_Student()" enctype ="multipart/form-data">
+              <div class="form-group">
+                <label class="form-control">Nombre</label>
+                <input type="text" class="form-control" ng-model="student.name">
+              </div>
+              <div class="form-group">
+                <label class="form-control">Apellido</label>
+                <input type="text" class="form-control" ng-model="student.lastname">
+              </div>
+              <div class="form-group">
+                <label class="form-control">Edad</label>
+                <input type="text" class="form-control" ng-model="student.age">
+              </div>
+              <button class="btn btn-success form-control">Guardar</button>              
+            </form>
+            {{connect.message}}
+          </div>          
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Estudiante</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="reset()"  ng-submit="update_Student()" enctype ="multipart/form-data">
+              <input type="hidden" class="form-control" id="edit_codeform" ng-model="editstudent.code">
+              <div class="form-group">
+                <label class="form-control">Nombre</label>
+                <input type="text" class="form-control" id="edit_nameform" ng-model="editstudent.name">
+              </div>
+              <div class="form-group">
+                <label class="form-control">Apellido</label>
+                <input type="text" class="form-control" id="edit_lastnameform" ng-model="editstudent.lastname">
+              </div>
+              <div class="form-group">
+                <label class="form-control">Edad</label>
+                <input type="text" class="form-control" id="edit_ageform" ng-model="editstudent.age">
+              </div>
+              <button class="btn btn-success form-control">Guardar</button>              
+            </form>
+            {{editstudent}}
+            {{connect.message}}
+          </div>          
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Problemas relacionados</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          <table class="table table-bordered table-striped" style="font-size:75%">
+            <thead class="thead-inverse">
+              <tr>
+                <th>Nombre</th>
+                <th>Codigo</th>
+                <th>Descripción</th>
+                <th>Clasificación</th>
+                <th>Tipo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="problem in problems">   
+              <tr>
+                <td>{{problem.nameProblem}}</td>
+                <td>{{problem.codeProblem}}</td>
+                <td>{{problem.descProblem}}</td>
+                <td>{{problem.typeProblem}}</td>
+                <td>{{problem.kind}}</td>
+                <td><a ng-click="problems_formulation(problem.codeProblem)"><button class="btn btn-primary">Formulaciones</button></a></td>
+              </tr>
+            </tbody>
+          </table>
+            {{connect.message}}
+            {{connect.message}}
+          </div>          
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>  
+</div>

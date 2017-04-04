@@ -101,7 +101,23 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 			//console.log(JSON.stringify(requestx)); 
 			//console.log('lista :'+JSON.stringify($scope.list_cha, null, 4));
 			
-		} 
+		}
+
+		//Construir slider de preguntas
+		$scope.currentIndex = 0;
+		$scope.setCurrentSlideIndex = function (index) {
+    	    $scope.currentIndex = index;
+    	};
+    	$scope.isCurrentSlideIndex = function (index) {
+        	return $scope.currentIndex === index;
+    	};
+
+	    $scope.prevSlide = function () {
+        	$scope.currentIndex = ($scope.currentIndex < $scope.list_challen.length - 1) ? ++$scope.currentIndex : 0;
+    	};
+    	$scope.nextSlide = function () {
+        	$scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.list_challen.length - 1;
+    	}; 
 
 		//Función para generar la matriz 
 
@@ -123,7 +139,7 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 
 		//Instancia que ejecuta init
 		init();
-		//En este punto inicializare todas las funciones asociadas al onload de una pagina
+		//En este punto inicializare todas las funciones asociadas al onload de una pagina para inicializar plugin
 		execute_carousel();
 		
 

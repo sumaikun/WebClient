@@ -1,11 +1,11 @@
-app.factory('AchivementResource',['$http','$q',function($http,$q){
+app.factory('ExamsResource',['$http','$q',function($http,$q){
 	
-	var AchivementResource = {};
+	var ExamsResource = {};
     var defered = $q.defer();
     var promise = defered.promise;
 
-    AchivementResource.count = function(){ 
-	 $http.get("http://localhost/Eappi/public/list_achivements")
+    ExamsResource.count_five = function(){ 
+	 $http.get("http://localhost/Eappi/public/take_five_questions")
 		.success(function(data){
 			console.log(data);
 			defered.resolve(data);
@@ -18,6 +18,6 @@ app.factory('AchivementResource',['$http','$q',function($http,$q){
 
 		
 	
-	return AchivementResource;	
+	return ExamsResource;	
 	
 }]);

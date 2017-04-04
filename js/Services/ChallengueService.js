@@ -5,7 +5,7 @@ app.factory('ChallengueResource',['$http','$q',function($http,$q){
     var promise = defered.promise;
 
     ChallengueResource.count = function(){ 
-	 $http.get("http://localhost/Gappi/public/list_challengues")
+	 $http.get("http://localhost/Eappi/public/list_challengues")
 		.success(function(data){
 			console.log(data);
 			defered.resolve(data);
@@ -17,7 +17,7 @@ app.factory('ChallengueResource',['$http','$q',function($http,$q){
 	}
 
 	ChallengueResource.begin = function(id){ 
-	 return $http.get("http://localhost/Gappi/public/begin_challengues/"+id)
+	 return $http.get("http://localhost/Eappi/public/begin_challengues/"+id)
 		.success(function(data){
         	console.log('funcion enviada');
         	return data;
@@ -36,7 +36,7 @@ app.factory('ChallengueResource',['$http','$q',function($http,$q){
 		qualification = {};
 		qualification.score = score;
 		qualification.ask_id = ask_id;
-		return $http.post("http://localhost/Gappi/public/set_score",qualification)
+		return $http.post("http://localhost/Eappi/public/set_score",qualification)
 		.success(function(data){
 
         	console.log('service data '+ JSON.stringify(data));
