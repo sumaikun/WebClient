@@ -14,16 +14,20 @@
          };
      }]);*/
 
-app.directive('countdown', ['Util', '$interval', function (Util, $interval){ 
+app.directive('countingtime', ['Util', '$interval', function (Util, $interval){ 
   return{ 
     restrict: 'A',
     scope:{
-      date: '@',
+      value: '@',
     },
     link: function(scope, element){     
-      future = new Date (scope.date);
-      $interval(function(){  
-          diff = Math.floor (future.getTime() - new Date().getTime()) / 1000;
+      future =   new Date();
+      future.setHours(0);
+      future.setMinutes(0);
+      future.setSeconds(0);
+      $interval(function(){          
+          future.setSeconds(future.getSeconds()+1);  
+          diff = Math.floor (future) / 1000;          
           return element.text(Util.dhms(diff));                 
        } , 1000);
       }
@@ -42,8 +46,8 @@ app.factory('Util', [function()
       t -= minutes * 60;
       seconds = Math.floor(t) % 60;
         return [
-            days + 'd',
-            hours + 'h',
+            //days + 'd',
+            //hours + 'h',
             minutes + 'm',
             seconds + 's'
         ].join(' ');

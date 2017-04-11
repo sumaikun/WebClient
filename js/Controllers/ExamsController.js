@@ -23,4 +23,9 @@ app.controller('ExamsController',['$scope','ExamsResource',function($scope,Exams
 
 		//Instancia que ejecuta init
 		init();
+
+	$scope.scores = function(){
+		
+	}
+	 	
 }]);
