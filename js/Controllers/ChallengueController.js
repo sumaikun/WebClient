@@ -84,10 +84,11 @@ app.controller('ChallengueController',['$scope','ChallengueResource','$window','
 		$scope.generate = function(id){	
 
 			//console.log('id relacionado '+id);
-			$scope.question.title = $scope.col_row[(id-1)].titulo;			
 			var requestx = ChallengueResource.begin(id);
 			requestx.success(function(response){
 				$scope.list_challen = response;
+				console.log("datos a evaluar");				
+				$scope.question.title = $scope.list_challen[0].titulo;				
 				$scope.ask_id = id;
 			});
 			requestx.error(function(error){

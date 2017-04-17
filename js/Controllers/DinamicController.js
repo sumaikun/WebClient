@@ -9,6 +9,9 @@ app.controller('DinamicController',['$scope','DinamicResource','$window','$compi
 	$scope.editstudent =  {};
 	$scope.skills = {};
 	$scope.problems = {};
+	$scope.question = {};
+	$scope.genequestion = {};
+	$scope.count = {};
 
 	$scope.start = function(){
       cfpLoadingBar.start();
@@ -106,6 +109,24 @@ app.controller('DinamicController',['$scope','DinamicResource','$window','$compi
 		});
 	}
 
+	$scope.generateQuestion = function(id){
+		$scope.question.skill = id;
+		$scope.question.student = 5712536552865792;		
+		var request = DinamicResource.generateQuestion($scope.question);		
+		request.success(function(response)
+		{
+		    $("#myModal4").modal('show');			
+			$scope.genequestion = response;
+			console.log('genequestion ');
+			console.log($scope.genequestion);
+
+		});
+		request.error(function(error){
+			console.log('error');
+			$scope.connect = {message: 'Ha ocurrido un error'}
+		});
+	}
+
 	
     $scope.problems_skill = function(id){
     	var request = DinamicResource.listProblems(id);
@@ -114,6 +135,41 @@ app.controller('DinamicController',['$scope','DinamicResource','$window','$compi
 			$("#myModal3").modal('show');
 			console.log(response.items);
 			$scope.problems = response.items;
+
+		});
+		request.error(function(error){
+			console.log('error');
+			$scope.connect = {message: 'Ha ocurrido un error'}
+		});
+    }
+
+    $scope.qualify = function(){
+    	console.log("respuesta ");
+    	console.log($scope.ans_ask);
+    	//console.log($scope.genequestion);
+    	//$("#myModal4").modal('hide');
+    	$scope.answer = {};
+    	$scope.answer.student =  5712536552865792;
+    	$scope.answer.question =  $scope.genequestion.codeQuestion;
+    	$scope.answer.answer =  $scope.ans_ask;
+    	$scope.count.good = 0; 
+    	$scope.count.bad = 0;
+    	var request = DinamicResource.qualifyAnswer($scope.answer);
+		request.success(function(response)
+		{
+			$("#response_animation").empty();			
+			if(response.grade==1)
+			{
+				console.log("correcto");
+				$("#response_animation").append("<div class='checkmark-circle' style='margin-top:-50px'><div class='background' style='height:90%;width:90%'></div><div class='checkmark draw'></div></div>");
+				$("#dynamic_ans").val("");
+				$scope.generateQuestion($scope.question.skill);
+				scope.count.good += 1; 
+			}
+			else{
+				console.log("incorrecto");
+				$scope.count.bad += 1;	
+			}			
 
 		});
 		request.error(function(error){

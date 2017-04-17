@@ -7,7 +7,7 @@ app.factory('DinamicResource',['$http','$q',function($http,$q){
     //studentendpoint
 
     DinamicResource.listStudent = function(){ 
-	 return $http.get("https://1-dot-appteachers.appspot.com/_ah/api/studentendpoint/v1/student")
+	 return $http.get("https://2-dot-appteachers.appspot.com/_ah/api/loginendpoint/v2/student")
 		.success(function(data){
         	console.log('funcion enviada');
         	return data;
@@ -20,7 +20,7 @@ app.factory('DinamicResource',['$http','$q',function($http,$q){
 	}
 
 	DinamicResource.deleteStudent = function(id){ 
-	 return $http.delete("https://1-dot-appteachers.appspot.com/_ah/api/studentendpoint/v1/student/"+id)
+	 return $http.delete("https://2-dot-appteachers.appspot.com/_ah/api/loginendpoint/v2/student/"+id)
 		.success(function(data){
         	console.log('funcion enviada');
         	return data;
@@ -42,7 +42,7 @@ app.factory('DinamicResource',['$http','$q',function($http,$q){
        fd.append('age', data.age);
       
     
-       $http.post("https://1-dot-appteachers.appspot.com/_ah/api/studentendpoint/v1/student",fd,{
+       $http.post("https://2-dot-appteachers.appspot.com/_ah/api/loginendpoint/v2/student",fd,{
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
        })
@@ -73,7 +73,7 @@ app.factory('DinamicResource',['$http','$q',function($http,$q){
        
       
     
-       $http.put("https://1-dot-appteachers.appspot.com/_ah/api/studentendpoint/v1/student",fd,{
+       $http.put("https://2-dot-appteachers.appspot.com/_ah/api/loginendpoint/v2/student",fd,{
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
        })
@@ -91,7 +91,21 @@ app.factory('DinamicResource',['$http','$q',function($http,$q){
     }
 
     DinamicResource.listSkill = function(){ 
-     return $http.get("https://1-dot-appteachers.appspot.com/_ah/api/questionproccesorendpoint/v1/skill")
+     return $http.get("https://2-dot-appteachers.appspot.com/_ah/api/studentendpoint/v2/skill")
+        .success(function(data){
+
+            console.log('funcion enviada');
+            defered.resolve(data);
+        })
+            .error(function(err){
+            defered.reject(err);
+        });
+    
+        return promise; 
+    }
+
+    DinamicResource.listProblems = function(id){ 
+     return $http.get("https://2-dot-appteachers.appspot.com/_ah/api/teachersendpoint/v2/problem/"+id)
         .success(function(data){
             console.log('funcion enviada');
             return data;
@@ -103,9 +117,41 @@ app.factory('DinamicResource',['$http','$q',function($http,$q){
         });
     }
 
-    DinamicResource.listProblems = function(id){ 
-     return $http.get("https://1-dot-appteachers.appspot.com/_ah/api/serviceendpoint/v1/problem/"+id)
+    DinamicResource.generateQuestion = function(data){       
+       console.log(data); 
+       var fd = new FormData();
+       fd.append('codeStudent', data.student);
+       fd.append('idSkilll', data.skill);      
+    
+       return $http.post("https://2-dot-appteachers.appspot.com/_ah/api/studentendpoint/v2/generateQuestion",fd,{
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+       })
+            
         .success(function(data){
+            console.log('funcion enviada pregunta generada');
+            return data;
+            
+        })
+            .error(function(err){
+            return err; 
+            
+        }); 
+    }
+
+    DinamicResource.qualifyAnswer = function(data){       
+       console.log(data); 
+       var fd = new FormData();
+       fd.append('codeStudent', data.student);
+       fd.append('codeQuestion', data.question);
+       fd.append('proposedAnswer', data.answer);    
+    
+       return $http.post("https://2-dot-appteachers.appspot.com/_ah/api/studentendpoint/v2/qualifyAnswer",fd,{
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
+       })
+            
+       .success(function(data){
             console.log('funcion enviada');
             return data;
             //defered.resolve(data);
@@ -113,9 +159,8 @@ app.factory('DinamicResource',['$http','$q',function($http,$q){
             .error(function(err){
             return err; 
             //defered.reject(err);
-        });
-    }
-    		
+        }); 
+    }	
 	
 	return DinamicResource;	
 	

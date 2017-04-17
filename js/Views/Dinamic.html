@@ -3,7 +3,7 @@
     {{title}}
     <h1>talleres dinamicos</h1>
     <div class="row">
-      <h3>Serviceendpoint</h3>
+      <h3>Ejericicios</h3>
       <table class="table table-bordered table-striped">
           <thead class="thead-inverse">
             <tr>
@@ -12,7 +12,8 @@
               <th>Descripción</th>
               <th>Tipo</th>
               <th>Curso</th>
-              <th></th>
+              <th>Problemas</th>
+              <th>Generar</th>
             </tr>
           </thead>
           <tbody ng-repeat="skill in skills">   
@@ -23,13 +24,14 @@
               <td>{{skill.kind}}</td>
               <td>{{skill.nameCourse}}</td>
               <td><a ng-click="problems_skill(skill.codeSkill)"><button class="btn btn-success">Ver problemas</button></a></td>
+              <td><a ng-click="generateQuestion(skill.codeSkill)"><button class="btn btn-success">Generar Pregunta</button></a></td>
             </tr>
           </tbody>
         </table>
         {{connect.message}}
     </div>
     <div class="row">
-      <h3>Studentendpoint</h3>
+      <h3>Usuarios talleres dinamicos</h3>
         <table class="table table-bordered table-striped">
           <thead class="thead-inverse">
             <tr>
@@ -58,7 +60,7 @@
       {{connect.message}}
     </div>
     <div class="row">
-      <h3>Teacherendpoint</h3>
+      <h3>//</h3>
     </div>
     
 
@@ -162,6 +164,30 @@
           </table>
             {{connect.message}}
             {{connect.message}}
+          </div>          
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pregunta generada</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              bien {{answer.good}} mal {{answer.bad}}
+              <h3>Pregunta</h3>
+              <span>{{genequestion.question}}</span>
+              <input type="text" id="dynamic_ans" ng-model="ans_ask" class="form-control">
+              <br>
+              <a ng-click="qualify()"><button  class ="form-control btn btn-danger">Enviar</button></a>
+            {{connect.message}}
+            {{connect.message}}
+             <div id="response_animation" class="col-lg-6">
           </div>          
         </div>
       </div>
